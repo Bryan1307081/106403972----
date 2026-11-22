@@ -1,0 +1,95 @@
+:root {
+  font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+  color: #243047;
+  background: #f4f7fb;
+}
+
+body {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px #24304714;
+}
+
+h1 {
+  margin: 0;
+  color: #3157c8;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+}
+
+h2 {
+  margin: 28px 0 14px;
+  font-size: 1.15rem;
+}
+
+#numbers,
+#myNumbers,
+#groups,
+#winningNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#numbers button,
+#myNumbers span,
+#winningNumbers span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #edf1fb;
+  color: #3157c8;
+  font-weight: 700;
+}
+
+#numbers button {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#numbers button:hover,
+#numbers button.selected {
+  background: #3157c8;
+  color: white;
+  transform: translateY(-2px);
+}
+
+p {
+  color: #65718a;
+}
+
+button {
+  margin: 8px 8px 0 0;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #3157c8;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #2546aa;
+  transform: translateY(-1px);
+}
+
+#result {
+  margin-top: 20px;
+  color: #23936b;
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 16px;
+    padding: 22px;
+  }
+}

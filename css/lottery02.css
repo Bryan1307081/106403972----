@@ -1,0 +1,152 @@
+:root {
+  font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+  color: #3d3028;
+  background: #fff7ed;
+}
+
+body {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 36px;
+  background: #fff;
+  border: 1px solid #ffe2c2;
+  border-radius: 24px;
+  box-shadow: 0 16px 48px #9a4a1518;
+}
+
+h1 {
+  margin: 0;
+  color: #f07818;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+}
+
+h1 + h2 {
+  margin: 8px 0 28px;
+  color: #9a7760;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* 選號區 */
+#numbers {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(24px, 1fr));
+  gap: 10px;
+  padding: 20px;
+  background: #fff8f1;
+  border: 1px solid #ffead7;
+  border-radius: 24px;
+  margin: 0 auto;
+}
+
+#numbers button {
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid #ffd6ad;
+  border-radius: 50%;
+  background: #fff;
+  color: #e66b0a;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#numbers button:hover,
+#numbers button.selected {
+  border-color: #ff8517;
+  background: #ff8517;
+  color: #fff;
+  transform: scale(1.06);
+}
+
+/* 選取數量與操作按鈕 */
+p {
+  margin: 16px 0;
+  color: #8c7767;
+}
+
+#count {
+  color: #e66b0a;
+  font-weight: 800;
+}
+
+body > button {
+  margin: 4px 8px 20px 0;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: #ff8517;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+body > button:hover {
+  background: #e96c08;
+  transform: translateY(-2px);
+}
+
+/* 下方資訊區塊 */
+#myNumbers,
+#groups,
+#winningNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 48px;
+  padding: 16px;
+  background: #fffaf5;
+  border: 1px solid #ffead7;
+  border-radius: 16px;
+}
+
+#myNumbers span,
+#winningNumbers span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffeddc;
+  color: #e66b0a;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 26px 0 12px;
+  font-size: 1.1rem;
+}
+
+#result {
+  margin: 18px 0 0;
+  padding: 16px;
+  border-radius: 14px;
+  background: #fff2e3;
+  color: #d96000;
+  font-size: 1.1rem;
+}
+
+/* 手機版 */
+@media (max-width: 600px) {
+  body {
+    margin: 14px;
+    padding: 22px;
+  }
+
+  #numbers {
+    grid-template-columns: repeat(5, minmax(38px, 1fr));
+    gap: 8px;
+    padding: 14px;
+  }
+
+  body > button {
+    margin-right: 4px;
+    padding: 11px 14px;
+  }
+}

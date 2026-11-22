@@ -1,0 +1,49 @@
+#page {
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+#header {
+    background-image: url(../images/01.png);
+    height: 235px;
+}
+#menuButton {
+    background-image: url(../images/02.png);
+    height: 45px;
+}
+#main {
+    background-image: url(../images/03.png);
+}
+#album {
+    width: calc(800px - (210px * 3) - 20px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 calc(156px / 2);
+}
+.myPhoto {
+    position: relative;
+}
+.myPhoto img {
+    border-radius: 10px;
+    opacity: 0.7;
+
+    transition: all 0.7s ease;
+}
+.myPhoto img:hover {
+    opacity: 1;
+}
+.Watermark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.7s ease;
+    opacity: 1;
+}
+.myPhoto p {
+    text-align: center;
+}
+#footer {
+    background-image: url(../images/04.png);
+    height: 61px;
+}

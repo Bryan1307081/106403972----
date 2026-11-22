@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zn-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>for 迴圈(計次迴圈)</h2>
+    <p>
+        for (計數器; 判斷式; 步進值) { <br>
+        程式碼; <br>
+        } <br>
+        innerText：一般元素的文字內容(標籤無作用)，如：&lt;p&gt;innerText&lt;/p&gt; <br>
+        innerHTML：一般元素的文字內容(標籤有作用)，如：&lt;div&gt;innerText&lt;div&gt;
+    </p>
+    <div id="result1"></div>
+    <script>
+        for (i=0; i<10; i++) {
+            document.querySelector("#result1").innerHTML += (i + 1) + ": Hello <br>";
+        }
+    </script>
+
+    <h2>while 迴圈(條件迴圈)</h2>
+    <p>
+        while (判斷式) { <br>
+            程式碼; <br>
+            步進值(可有可無); <br>
+        } <br>
+    </p>
+    <div id="result2"></div>
+    <script>
+        let i = 0;
+        let j = 0;
+        while (i < 5 || j < 10) {
+            document.querySelector("#result2").innerHTML += "Hello<br>";
+            i++;
+            j++;
+        }
+    </script>
+
+    <h2>do/while 迴圈(條件迴圈)</h2>
+    <p>
+        do { <br>
+            程式碼; <br>
+            步進值(可有可無); <br>
+        } while (判斷式); <br>
+    </p>
+    <p>Enter the password</p>
+    <input type="password" name="" id="password">
+    <button type="button" onclick="checkPassword()">SEND</button>
+    <div id="result3"></div>
+    <script>
+        let answer = "1234";
+        result3 = document.querySelector("#result3");
+        function checkPassword() {
+            let password = document.querySelector("#password").value;
+            do{
+                if (password == answer) {
+                    result3.innerText = "SUCCESS!";
+                } else {
+                    result3.innerText = "FAILED";
+                }
+            } while (password != answer && i < 3);
+        }
+    </script>
+
+    <h2>for/in 迴圈(巡迴陣列或物件)</h2>
+    <div id="result4"></div>
+    <script>
+        let student = {
+            name: "Danny",
+            age: 20,
+            chinese: 76,
+            math: 39,
+            english: 92
+        }
+        //相當於 student[name], student[age],... 依此類推
+        for (let item in student) {
+            document.querySelector("#result4").innerHTML += item + " = " + student[item] + "<br>";
+        }
+
+        let fruits = ["apple", "banana", "grape", "peach", "guava", "orange", "papaya" ];
+        for (let item in fruits) {
+            document.querySelector("#result4").innerHTML += item + " = " + fruits[item] + "<br>";
+        }
+        let boy = true;
+        console.log(typeof boy);
+        let now = Date.now();
+        console.log(now, typeof now);
+        let today = new Date();
+        console.log(today, typeof today, today.getMonth(),today.getDate());
+
+    </script>
+
+
+
+</body>
+
+</html>

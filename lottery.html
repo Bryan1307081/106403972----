@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottery</title>
+    <link rel="stylesheet" href="css/lottery03.css">
+</head>
+
+<body>
+    <h1>LOTTERY SYSTEM</h1>
+    <h2>please choose 6 numbers</h2>
+    <div id="numbers"></div>
+    <p>CHOSEN：<span id="count"></span> / 6</p>
+
+    <button onclick="addGroup()">Add</button>
+    <button onclick="autoPicking()">Auto picking</button>
+    <button onclick="winningLottery()">Winning numbers</button>
+
+    <h2>Has chosen numbers</h2>
+    <div id="myNumbers"></div>
+
+    <h2>Saved number groups</h2>
+    <div id="groups"></div>
+
+    <h2>Winning numbers</h2>
+    <div id="winningNumbers"></div>
+
+    <h3 id="result"></h3>
+    <script>
+        //產生49個號碼 (字串樣板) `<button>${i}</button>` = (字串串接) '<button>' + ${i} + '</button>'
+        for (let i = 1; i <= 49; i++) {
+            document.querySelector("#numbers").innerHTML += `<button class="number-ball" id="ball${i}" onclick="selectNumber(${i})">${i}</button>`;
+        }
+
+        //定義使用者選到的號碼組
+        let selected = [];
+
+        function selectNumber(n) {
+            //搜尋陣列內容，有找到就回傳 index, 找不到就回傳 -1
+            let index = selected.indexOf(n);
+            //判斷號碼存在
+            if (index >= 0) {
+                //刪除指定位置的1個項目
+                selected.splice(index, 1);
+            } else if (selected.length < 6) {
+                selected.push(n);
+            } else {
+                alert("already picked 6 numbers");
+            }
+            //將號碼排序
+            selected.sort((a, b) => a - b);
+            document.querySelector("#myNumbers").innerText = selected.join(", ");
+            document.querySelector("#count").innerText = selected.length;
+        }
+
+        //定義使用者存儲的號碼
+        let groups = [];
+        function addGroup() {
+            //如過號碼組未達10組才儲存
+            if (groups.length < 10) {
+                //如果號碼數為6才能儲存至號碼組中
+                if (selected.length == 6) {
+                    //將一維陣列加到二維陣列中
+                    groups.push([...selected]);
+                    //清空選單
+                    selected = [];
+                    console.log(groups);
+                    document.querySelector("#myNumbers").innerText = selected.join(", ");
+                    document.querySelector("#count").innerText = selected.length;
+                    showGroups();
+                }
+            } else {
+                alert("Maximum of 10 groups reached. You cannot add more.");
+            }
+        }
+
+        //顯示已儲存的號碼組
+        function showGroups() {
+            let str = '';
+            for (let i = 0; i < groups.length; i++) {
+                str += `GROUP ${i + 1} ：`;
+                for (let n in groups[i]) {
+                    str += groups[i][n] + ", ";
+                }
+                str += '<br>';
+            }
+            document.querySelector("#groups").innerHTML = str;
+        }
+
+        //隨機自動選號
+        function randomNumbers() {
+            let nums = [];
+            while (nums.length < 6) {
+                let n = Math.ceil(Math.random() * 49);
+                if (!nums.includes(n)) {
+                    nums.push(n);
+                }
+            }
+            nums.sort((a, b) => a - b);
+            return nums;
+        }
+
+        //電腦自動選號
+        function autoPicking() {
+            selected = randomNumbers();
+            // alert(selected.join(','));
+            addGroup(selected);
+        }
+
+        //開講按鈕
+        function winningLottery() {
+            if (groups.length == 0) {
+                alert("Please select a number group first!");
+            } else {
+                //定義開獎號碼
+                let lottery = randomNumbers();
+                let winningNumbers = document.querySelector("#winningNumbers");
+                winningNumbers.innerHTML = lottery.join(", ");
+                let result = '';
+                //兌獎功能(使用巢狀迴圈， i 為列(組), j 為欄(號碼))
+                for (let i = 0; i < groups.length; i++) {
+                    //定義中獎數量
+                    let count = 0;
+                    for (let j = 0; j < 6; j++) {
+                        //判斷是否有選中號碼
+                        if (lottery.includes(groups[i][j])) {
+                            count++;
+                        }
+                    }
+                    //顯示中幾號
+                    result += `GROUP${i + 1}：${count} in Numbers <br>`;
+                    document.querySelector("#result").innerHTML = result;
+                }
+            }
+        };
+
+
+    </script>
+</body>
+
+</html>

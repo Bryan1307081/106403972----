@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant0">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <h1>DOM 操作</h1>
+    <button onclick="red()">turn red</button>
+    <button onclick="change()">change image</button>
+    <br>
+
+    <a href="https://www.google.com">Google</a> |
+    <a href="https://tw.yahoo.com">Yahoo</a> |
+    <a href="https://dictionary.cambridge.org/">cambridge</a> <br>
+    <img src="img/sausage_dog01.jpg" alt="" width="200px">
+    <script>
+        function red() {
+            let a = document.querySelectorAll("a");
+            //指定其中 a 變紅色
+            // a[0].style.color = "red";
+            //全部變紅色
+            for(let i in a) {
+                a[i].style.color = "red";
+            }
+        }
+
+        function change() {
+            let img = document.querySelector('img[src="img/sausage_dog01.jpg"]');
+            img.src = "img/sausage_dog02.jpg";
+        }
+    </script>
+
+</body>
+
+</html>

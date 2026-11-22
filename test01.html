@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is test web</title>
+    <style>
+        .required {
+            color: brown;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="8-1.html" method="get">
+        <label for="username">Name：
+            <input type="text" name="username" id="username" value="" placeholder="Enter your name">
+        </label> <br>
+        <label for="">Survey：
+            <textarea name="survey" id="survey" placeholder="everything is amazing!"></textarea>
+        </label>
+        <h3>Transportation：</h3> <!-- 單選 -->
+        <label for="transport"><input type="radio" name="transport" id="trans_scooter" value="scooter">Scooter</label>
+        <label for="transport"><input type="radio" name="transport" id="trans_car" value="car">Car</label>
+        <label for="transport"> <input type="radio" name="transport" id="trans_bus" value="bus">Bus</label>
+        <h3>Habit：</h3> <!-- 複選 -->
+        <label for="interest_workout"><input type="checkbox" name="interest[]" id="interest_workout" value="workout">To
+            do Workout</label> <br>
+        <label for="interest_music"><input type="checkbox" name="interest[]" id="interest_music" value="music">Listen to
+            music</label> <br>
+        <label for="interest_games"><input type="checkbox" name="interest[]" id="interest_games" value="games">Playing
+            online Games</label> <br>
+        <label for="interest_films"><input type="checkbox" name="interest[]" id="interest_films" value="games">Watching
+            films</label>
+        <h3>Gender：</h3> <!-- 下拉式選單 -->
+        <select name="gender" id="gender">
+            <option value="">Please select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="trans">Trans</option>
+        </select>
+        <h3>Orders (use Ctrl to add)</h3> <!-- 下拉式選單 -->
+        <select name="food[]" id="food" multiple>
+            <option value="">Please select</option>
+            <option value="beefNoodle">Beef noodle</option>
+            <option value="firedRice">Fired rice</option>
+            <option value="raman">Raman</option>
+            <option value="pasta">Pasta</option>
+            <option value="pizza">Pizza</option>
+            <option value="eggsoup">Egg soup</option>
+        </select> <br>
+        <button type="submit" value="send">send</button>
+    </form>
+    <!-- http://127.0.0.1:5500/8-1.html?
+    username=admin&
+    survey=fjdkls&
+    transport=car&
+    interest%5B%5D=workout&
+    interest%5B%5D=music&
+    gender=male&
+    food%5B%5D=beefNoodle&
+    food%5B%5D=firedRice -->
+    <hr>
+    <form action="get">
+        <label for="account"><span class="required">*</span> Account：<input type="text" name="account" id="account"
+                value="bryan" readonly></label> <br>
+        <label for="password"><span class="required">*</span> Password：<input type="password" name="password"
+                id="password" value="123456" disabled></label> <br>
+        <label for="mail"><span class="required">*</span> Email：<input type="email" name="mail" id="mail"
+                required></label> <br>
+        <label for="mail">Age：<input type="number" name="age" id="age" min="1" max="120" step="1"></label> <br>
+        <label for="score">Score：<input type="number" name="score" id="score" min="0" max="100" step="1"></label> <br>
+        <label for="date">Date：<input type="date" name="" id=""></label> <br>
+        <!-- <label for="datetime">Date time：<input type="datetime" name="" id=""></label> <br> -->
+        <label for="datetime-local">Datetime-local：<input type="datetime-local" name="" id=""></label>
+
+        <button type="submit">send</button>
+    </form>
+    <hr>
+    <p>請輸入分數：</p>
+    <input type="number" name="subjectscore" id="subjectScore" min="0" max="100">
+    <button type="button" name="subjectscore" value="calculate" onclick="checkScore()">calculate</button>
+
+    <script>
+        function checkScore() {
+            let score = document.getElementById("subjectScore").value;
+            if (score == 100) {
+                alert("A++");
+            } else if (score >= 90) {
+                alert("A");
+            } else if (score >= 80) {
+                alert("B+");
+            } else if (score >= 70) {
+                alert("B");
+            } else if (score >= 60) {
+                alert("C+");
+            } else {
+                alert("F");
+            }
+        }
+    </script>
+    <hr>
+    <p>英文單字</p>
+    <input type="text" name="word" id="word">
+    <button type="button" value="翻譯" onclick="translateword()">翻譯</button>
+    <script>
+        function translateword() {
+            let word = document.getElementById("word").value;
+            let url = "https://api.mymemory.translated.net/get?q=" + word + "&langpair=en|zh-TW";
+            fetch(url).then(response => response.json()).then(
+                data => {
+                    let result = data.responseData.translatedText;
+                    alert(result);
+                }
+            )
+            // let chinese = '';
+            // switch(word) {
+            //     case "apple": chinese = "蘋果";
+            //     break;
+            //     case "banana": chinese = "香蕉";
+            //     break;
+            //     default: chinese = "查無字典";
+            // }
+            // alert(chinese);
+        }
+    </script>
+    
+</body>
+
+</html>

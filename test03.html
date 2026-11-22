@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>GUESS A NUMBER</h1>
+    <p>please guess a number in 1 ~ 100</p>
+    <!-- 增加事件：onclick="this.value=''"，讓使用者點擊輸入框時清空內容 -->
+    <input type="number" onclick="this.value=''" onkeydown="if (event.key=='Enter') game()" name="" id="number" style="width: 200px;" min="1" max="100">
+    <!-- 增加事件：onkeydown="if (event.key == 'Enter') game()"，讓使用者案 Enter 可以直接送出 -->
+    <button type="button" onclick="game()">GUESS</button>
+    <div id="result" style="color: orangered; margin: 20px 0 0 80px;"></div>
+    <script>
+        // function show() {
+        //     //方法一：使用訊息視窗
+        //     //alert(word);
+
+        //     //方法二：使用控制台
+        //     let word = "Hello, you got me!";
+        //     // console.log("Hello, I am Bryan!");
+
+        //     //方法三：使用元素
+        //     let result = document.querySelector("#result");
+        //     result.innerHTML = word + " I am Bryan!";
+        // }
+        
+        const result = document.querySelector("#result");
+        // 宣告步數
+        let n = 0;
+        // 宣告一個亂數謎底, Math.ceil()：無條件進位小數, *100：將數值放大100倍
+        let answer = Math.ceil(Math.random() * 100);
+        console.log(answer);
+        function game () {
+            n++;
+            let number = document.querySelector("#number").value;
+            // 判斷一
+            // if (number == answer) {
+            //     result.innerText = "You got it! the answer is : " + answer;
+                
+            // } else {
+            //     result.innerText = "WRONG!";
+            // }
+
+            //判斷二
+            result.innerHTML += 'Step ' + n + '：';
+            if (number > answer) {
+                result.innerText += "too BIG";
+            } else if (number < answer) {
+                result.innerText += "too SMALL";
+            } else {
+                result.innerText += "You got it! the answer is : " + answer;
+            }
+            result.innerHTML += '<br>';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Name：<input type="text" name="user" id="user">
+    <button type="button" onclick="sayhello('')">Send</button>
+    <button type="button" onclick="sayhello('Jhon')">Button</button>
+
+    <script>
+        function sayhello(string) {
+            // 擷取 user 文字框內容
+            // let user = document.getElementById("user").value;
+            let user = string == '' ? document.querySelector("#user").value : string;
+            alert("Hello, " + user + "!");
+        }
+
+        // function price() {
+        //     const price = "NT$ " + 1000;
+        //     alert(price);
+        // }
+        // price();
+
+        //物件
+        var student = {
+            name: "Bryan",
+            number: 1,
+            chinese: 90,
+            english: 95,
+            math: 55,
+            move: function () {
+                alert("I am moving");
+            },
+            stop: function () {
+                alert("I am stop");
+            }
+        }
+        // student.move();
+        // student.stop();
+        // alert(student.math);
+        // alert(student.name);
+
+        //陣列
+        let students = ["Bryan", "Tom", "Amy", "Jhon", "Dragon", "Joe"];
+        // alert(students[0]);
+
+        //菜單
+        let menus = [
+            {name: "beef noodle", price: 150},
+            {name: "fired rice", price: 120},
+            {name: "pizza", price: 180},
+            {name: "egg soup", price: 60},
+        ];
+        // alert(menus[2].name + " NT$" + menus[2].price);
+    </script>
+    
+</body>
+
+</html>

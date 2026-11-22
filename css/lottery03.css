@@ -1,0 +1,187 @@
+
+:root {
+    --primary: #34345c;
+    --secondary: #7775a8;
+    --accent: #f2bd59;
+    --background: #f5f5fa;
+    --surface: #ffffff;
+    --border: #e8e8f0;
+    --text: #292943;
+    --muted: #9999aa;
+    --success: #4c9879;
+    --radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 50px 20px;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary);
+    font-size: clamp(28px, 4vw, 38px);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 19px;
+    margin: 30px 0 18px;
+    color: var(--primary);
+}
+
+h3 {
+    color: var(--success);
+    margin-top: 25px;
+}
+
+/* Main container */
+#numbers,
+#myNumbers,
+#groups,
+#winningNumbers {
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 5px 20px rgba(40, 40, 80, 0.05);
+}
+
+/* Number balls */
+#numbers {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 480px;
+    min-width: 0;
+    margin: 25px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px #0000000d;
+    box-sizing: border-box;
+}
+.number-ball {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    aspect-ratio: 1;
+
+    padding: 0;
+    line-height: 1;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #eeeeF7;
+    color: #34345c;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.number-ball:hover {
+    background: var(--secondary);
+    color: white;
+    transform: translateY(-4px);
+}
+
+.number-ball.selected {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 10px rgba(52, 52, 92, 0.25);
+}
+
+/* Count */
+#count {
+    color: var(--secondary);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Buttons */
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 25px;
+    margin: 8px 5px;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Saved groups */
+#groups {
+    text-align: left;
+    line-height: 2;
+}
+
+/* Winning numbers */
+#winningNumbers .number-ball {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+/* Result */
+#result {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 20px;
+    background: var(--surface);
+    border-radius: var(--radius);
+}
+/* 手機版 */
+@media (max-width: 420px) {
+  body {
+    margin: 14px auto;
+    padding: 22px;
+  }
+
+  #numbers {
+    box-sizing: border-box;
+    width: 95%;
+    max-width: 360px;
+    margin: 10px auto;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  body > button {
+    margin-right: 4px;
+    padding: 11px 14px;
+  }
+}
